@@ -1,0 +1,39 @@
+/* Sidebar smooth toggle */
+.sidebar {
+  transition: width 0.3s ease-in-out;
+  overflow: hidden;
+}
+
+.sidebar-open {
+  width: 250px;
+}
+
+.sidebar-closed {
+  width: 0px;
+}
+
+/* Hover effects for navigation links */
+.nav-link {
+  transition: background-color 0.2s ease;
+  border-radius: 5px;
+  margin-bottom: 5px;
+}
+
+.nav-link:hover {
+  background-color: rgba(255, 255, 255, 0.1) !important;
+  color: #fff !important;
+}
+
+/* Logout button hover */
+.btn-outline-danger:hover {
+  background-color: #dc3545;
+  border-color: #dc3545;
+  color: white;
+}
+
+/* Toggle button hover */
+.btn-outline-secondary:hover {
+  background-color: #6c757d;
+  border-color: #6c757d;
+  color: white;
+}

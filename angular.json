@@ -25,7 +25,9 @@
               }
             ],
             "styles": [
-              "src/styles.css"
+              "src/styles.css",
+              "node_modules/font-awesome/css/font-awesome.min.css",
+              "node_modules/bootstrap/dist/css/bootstrap.min.css"
             ]
           },
           "configurations": {
@@ -59,7 +61,8 @@
               "buildTarget": "EmployeeManagmentApp:build:production"
             },
             "development": {
-              "buildTarget": "EmployeeManagmentApp:build:development"
+              "buildTarget": "EmployeeManagmentApp:build:development",
+              "proxyConfig": "proxy.conf.json"
             }
           },
           "defaultConfiguration": "development"
