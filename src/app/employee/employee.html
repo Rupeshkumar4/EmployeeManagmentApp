@@ -39,12 +39,25 @@
           </div>
           <div class="col-md-6 mb-3">
             <label for="role" class="form-label">Role</label>
-            <input type="text" class="form-control" id="role" [(ngModel)]="employeeObject.role" name="role" placeholder="Enter role">
+            <select name="role" id="role" class="form-control" [(ngModel)]="employeeObject.role">
+              <option value="">Select value</option>
+              <option value="Employee">Employee</option>
+              <option value="Hr">Hr</option>
+            </select>
           </div>
         </div>
-        <button type="button" class="btn btn-primary" (click)="onSaveEmployee()">
+        @if(employeeObject.empId){
+          <button type="button" class="btn btn-warning" (click)="updateEmployee(employeeObject)" [disabled]="!employeeObject.empId">
+          <i class="fa fa-save"></i> Update Employee
+        </button>
+        }
+        @else{
+          <button type="button" class="btn btn-primary" (click)="onSaveEmployee()">
           <i class="fa fa-save"></i> Add Employee
         </button>
+        }
+        
+        
       </form>
     </div>
   </div>
@@ -83,7 +96,7 @@
         <button class="btn btn-sm btn-info me-2" title="View">
           <i class="fa fa-eye"></i>
         </button>
-        <button class="btn btn-sm btn-warning me-2" title="Edit">
+        <button class="btn btn-sm btn-warning me-2" title="Edit" (click)="onEditEmployee(employee)">
           <i class="fa fa-edit"></i>
         </button>
         <button class="btn btn-sm btn-danger" title="Delete" (click)="deleteEmployee(employee.empId!)">

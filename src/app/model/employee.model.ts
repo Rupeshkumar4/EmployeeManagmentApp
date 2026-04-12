@@ -35,3 +35,29 @@ export interface ApiResponse {
   message?: string;
   error?: any;
 }
+
+export interface userLogin{
+  userName: string;
+  password: string;
+}
+
+export class AllLeaveBalance {
+  balanceId: number;
+  empId: number;
+  leaveType: string;
+  count: number;
+  updatedDate: string;
+  updateBy: number;
+  empName: string;
+
+  constructor() {
+    this.balanceId = 0;
+    this.empId = 0;
+    this.leaveType = '';
+    this.count = 0;
+    this.updatedDate = '';
+    this.updateBy = 0;
+    this.empName = '';
+  }
+}
+ 

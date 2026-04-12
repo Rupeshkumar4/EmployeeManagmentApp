@@ -23,10 +23,10 @@ export class Employee implements OnInit {
     this.masterService.getEmployees().subscribe({
       next: (employees: EmployeeModel[]) => {
         this.employeeList = employees;
-        alert(`Fetched ${employees.length} employees from API`);
+        // alert(`Fetched ${employees.length} employees from API`);
       },
       error: (error: any) => {
-        alert('Error fetching employees from API');
+        alert(error.error || 'Error fetching employees from API');
       }
     });
   }
@@ -36,15 +36,11 @@ export class Employee implements OnInit {
     this.masterService.addEmployee(this.employeeObject).subscribe({
       next: (result: ApiResponse) => {
         alert(result.message || 'Employee added successfully');
+        this.employeeObject = new EmployeeModel(); // Reset form
+        this.getAllEmployees(); // Refresh the employee list after adding
       },
       error: (error: any) => {
-        const serverError = error?.error;
-        console.error('API error response', serverError || error);
-        if (serverError && typeof serverError === 'object') {
-          alert(JSON.stringify(serverError, null, 2));
-        } else {
-          alert('Error from API');
-        }
+          alert(error.error?.message || 'All mandatory fields must be filled');
       }
     });
   }
@@ -57,15 +53,28 @@ export class Employee implements OnInit {
           this.getAllEmployees(); // Refresh the employee list after deletion
         },
         error: (error: any) => {
-          const serverError = error?.error;
-          console.error('API error response', serverError || error);
-          if (serverError && typeof serverError === 'object') {
-            alert(JSON.stringify(serverError, null, 2));
-          } else {
             alert('Error from API');
-          }
         }
       });
     }
   }
+
+  onEditEmployee(employee: EmployeeModel) {
+    this.employeeObject = employee; 
+  }
+
+  updateEmployee(employee: EmployeeModel) {
+    this.masterService.updateEmployee(employee).subscribe({
+      next: (result: ApiResponse) => {
+        alert(result.message || 'Employee updated successfully');
+        this.getAllEmployees(); // Refresh the employee list after update
+      },
+      error: (error: any) => {
+          alert(error.error.message || 'Error from API');
+      }
+    })
+  }
+
+
+
 }

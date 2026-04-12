@@ -16,10 +16,11 @@ export class Login {
 
   constructor(private router: Router) {}
   login(){
-    this.masterService.loginEmployee(this.employeeObject.userName || '', this.employeeObject.password || '').subscribe({
+    this.masterService.loginEmployee({userName: this.employeeObject.userName || '', password: this.employeeObject.password || ''}).subscribe({
       next: (result) => {
         if (result && result.empId) {
           alert('Login successful');
+          localStorage.setItem('loggedInUser', JSON.stringify(result));
           const role = result.role?.toLowerCase();
           if (role === 'hr') {
             this.router.navigate(['/admin']);

@@ -12,8 +12,17 @@ import { EmployeeModel } from '../model/employee.model';
 export class Navbar {
   employeeObject: EmployeeModel = new EmployeeModel();
   isSidebarOpen = true;
+  public userName = '';
+  public role = '';
 
-  constructor(private router: Router) {}
+  constructor(private router: Router) {
+    const localStorageUser = localStorage.getItem('loggedInUser');
+    if(localStorageUser){
+      const user = JSON.parse(localStorageUser);
+      this.userName = user.empName || '';
+      this.role = user.role || '';
+    }
+  }
 
   toggleSidebar() {
     this.isSidebarOpen = !this.isSidebarOpen;
@@ -21,6 +30,7 @@ export class Navbar {
 
   logout() {
     // Add logout logic here, e.g., clear session
+    localStorage.removeItem('loggedInUser');
     this.router.navigate(['/login']);
   }
 }

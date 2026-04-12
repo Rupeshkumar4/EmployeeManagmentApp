@@ -1,9 +1,11 @@
 <div class="d-flex vh-100">
   <!-- Sidebar -->
-  <div class="bg-dark text-white d-flex flex-column sidebar" [ngClass]="{'sidebar-open': isSidebarOpen, 'sidebar-closed': !isSidebarOpen}" style="min-height: 100vh;">
+  <div class="bg-dark text-white d-flex flex-column sidebar" [ngClass]="{'sidebar-open': isSidebarOpen, 'sidebar-closed': !isSidebarOpen}" style="min-height: 150vh;">
     <div class="p-3 flex-grow-1">
       <h5 class="text-center">HR Dashboard</h5>
+      
       <ul class="nav flex-column">
+        @if(role === 'Hr'){
         <li class="nav-item">
           <a class="nav-link text-white" routerLink="employee" routerLinkActive="active">
             <i class="fa fa-users mr-2"></i> Employees
@@ -15,22 +17,35 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-white" routerLink="leave" routerLinkActive="active">
-            <i class="fa fa-file-text mr-2"></i> Leave Requests
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link text-white" routerLink="admin" routerLinkActive="active">
-            <i class="fa fa-cog mr-2"></i> Admin
-          </a>
-        </li>
+            <a class="nav-link text-white" routerLink="leave" routerLinkActive="active">
+              <i class="fa fa-file-text mr-2"></i> Leave Requests
+            </a>
+          </li>
+       }
+        @else {
+            <li class="nav-item">
+            <a class="nav-link text-white" routerLink="leave" routerLinkActive="active">
+              <i class="fa fa-file-text mr-2"></i> Leave Requests
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-white" routerLink="admin" routerLinkActive="active">
+              <i class="fa fa-cog mr-2"></i> Admin
+            </a>
+          </li>
+      }
       </ul>
+    </div>
+    <div class="p-3 w-100" style="color: aqua;">
+      @if(userName){
+        <span>{{userName}} || {{role}}</span>
+      }
     </div>
     <div class="p-3">
       <button class="btn btn-outline-danger w-100" (click)="logout()">
         <i class="fa fa-sign-out"></i> Logout
       </button>
-      <span>{{employeeObject.userName}}</span>
+      
     </div>
   </div>
 

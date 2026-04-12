@@ -1,7 +1,7 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { ApiResponse, EmployeeModel} from './model/employee.model';
+import { AllLeaveBalance, ApiResponse, EmployeeModel, userLogin} from './model/employee.model';
 
 @Injectable({
   providedIn: 'root',
@@ -25,7 +25,14 @@ export class Master {
   deleteEmployee(empId: number): Observable<ApiResponse> {
     return this.http.delete<ApiResponse>(`/api/LeaveTracker/DeleteEmployee/${empId}`);
   }
-  loginEmployee(userName: string, password: string): Observable<EmployeeModel> {
-    return this.http.post<EmployeeModel>('/api/LeaveTracker/login', { userName, password });
+  loginEmployee(obj: userLogin): Observable<EmployeeModel> {
+    return this.http.post<EmployeeModel>('/api/LeaveTracker/login', obj);
+  }
+  updateEmployee(employeeData: EmployeeModel): Observable<ApiResponse> {
+    return this.http.put<ApiResponse>(`/api/LeaveTracker/UpdateEmployee?id=${employeeData.empId}`, employeeData);
+  }
+
+  getAllLeaveBalance(): Observable<AllLeaveBalance[]> {
+    return this.http.get<AllLeaveBalance[]>('/api/LeaveTracker/GetAllBalances');
   }
 }
