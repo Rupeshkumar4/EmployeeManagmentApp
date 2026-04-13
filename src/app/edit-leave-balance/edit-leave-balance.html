@@ -1,0 +1,35 @@
+<div class="overlay">
+  <div class="modal-box">
+
+    <h4 class="mb-3">Edit Leave Balance</h4>
+
+    <!-- Employee Info -->
+    <div class="mb-2">
+      <label class="form-label">Employee</label>
+      <input class="form-control" [value]="employee.empName" disabled>
+    </div>
+
+    <div class="mb-2">
+      <label class="form-label">Employee ID</label>
+      <input class="form-control" [value]="employee.empId" disabled>
+    </div>
+
+    <!-- Editable Fields -->
+    <div class="mb-2" >
+      <label class="form-label">Leave Type</label>
+      <input class="form-control" [(ngModel)]="employee.leaveType" [disabled]="true">
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Leave Count</label>
+      <input type="number" class="form-control" [(ngModel)]="employee.count">
+    </div>
+
+    <!-- Buttons -->
+    <div class="d-flex justify-content-end gap-2">
+      <button class="btn btn-secondary" (click)="onCancel()">Cancel</button>
+      <button class="btn btn-primary" (click)="onUpdate()">Update</button>
+    </div>
+
+  </div>
+</div>

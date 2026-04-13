@@ -22,10 +22,10 @@ export class Login {
           alert('Login successful');
           localStorage.setItem('loggedInUser', JSON.stringify(result));
           const role = result.role?.toLowerCase();
-          if (role === 'hr') {
-            this.router.navigate(['/admin']);
-          } else if (role === 'employee') {
+          if (role === 'Hr') {
             this.router.navigate(['/employee']);
+          } else{
+            this.router.navigate(['/leave-balance']);
           } 
         } else {
           alert('Login failed');
