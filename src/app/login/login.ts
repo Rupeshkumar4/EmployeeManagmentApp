@@ -37,5 +37,9 @@ export class Login {
       }
     });
   }
+  logout() {
+  localStorage.removeItem('loggedInUser');
+  this.router.navigate(['/login']);
+}
   
 }

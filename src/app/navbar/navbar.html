@@ -1,8 +1,8 @@
-<div class="d-flex vh-100">
+<div class="layout d-flex vh-100"
+     [ngClass]="{'sidebar-collapsed': !isSidebarOpen}">
 
-  <!-- Sidebar -->
-  <div class="sidebar bg-dark text-white d-flex flex-column"
-       [ngClass]="{'sidebar-open': isSidebarOpen, 'sidebar-closed': !isSidebarOpen}">
+  <!-- SIDEBAR -->
+  <div class="sidebar bg-dark text-white d-flex flex-column">
 
     <!-- Logo -->
     <div class="p-3 text-center border-bottom">
@@ -16,37 +16,35 @@
     <div class="flex-grow-1 p-2">
       <ul class="nav flex-column">
 
-        @if(role === 'Hr'){
+        @if(role === 'Hr') {
 
           <li class="nav-item">
-            <a class="nav-link d-flex align-items-center" routerLink="employee" routerLinkActive="active">
-              <i class="fa fa-users me-3"></i>
-              <span>Employees</span>
+            <a class="nav-link" routerLink="/employee" routerLinkActive="active">
+              <i class="fa fa-users me-2"></i>
+              Employees
             </a>
           </li>
 
           <li class="nav-item">
-            <a class="nav-link d-flex align-items-center" routerLink="balance" routerLinkActive="active">
-              <i class="fa fa-calendar-check me-3"></i>
-              <span>Leave Balance</span>
+            <a class="nav-link" routerLink="/balance" routerLinkActive="active">
+              <i class="fa fa-calendar-check me-2"></i>
+              Leave Balance
             </a>
           </li>
 
           <li class="nav-item">
-            <a class="nav-link d-flex align-items-center" routerLink="leave" routerLinkActive="active">
-              <i class="fa fa-file-alt me-3"></i>
-              <span>Leave Requests</span>
+            <a class="nav-link" routerLink="/leaverequest" routerLinkActive="active">
+              <i class="fa fa-file-alt me-2"></i>
+              Leave Requests
             </a>
           </li>
 
-        }
-
-        @else {
+        } @else {
 
           <li class="nav-item">
-            <a class="nav-link d-flex align-items-center" routerLink="leaverequest" routerLinkActive="active">
-              <i class="fa fa-paper-plane me-3"></i>
-              <span>Leave Requests</span>
+            <a class="nav-link" routerLink="/leaverequest" routerLinkActive="active">
+              <i class="fa fa-paper-plane me-2"></i>
+              Leave Requests
             </a>
           </li>
 
@@ -56,53 +54,49 @@
     </div>
 
     <!-- User Info -->
-    <div class="p-3 border-top small text-center">
-      @if(userName){
-        <div>
-          <i class="fa fa-user-circle me-1"></i>
-          {{ userName }}
-        </div>
-        <div class="text-info">
-          <i class="fa fa-id-badge me-1"></i>
-          {{ role }}
-        </div>
-      }
+    <div class="p-3 border-top text-center small">
+      <div>
+        <i class="fa fa-user-circle me-1"></i>
+        {{ userName }}
+      </div>
+      <div class="text-info">
+        <i class="fa fa-id-badge me-1"></i>
+        {{ role }}
+      </div>
     </div>
 
     <!-- Logout -->
     <div class="p-3">
-      <button class="btn btn-danger w-100">
+      <button class="btn btn-danger w-100" (click)="logout()">
         <i class="fa fa-sign-out-alt me-2"></i>
         Logout
       </button>
     </div>
 
-    <!-- Footer -->
-    <p class="text-center small text-secondary mb-2">
-      Developed by Rupesh Kumar ❤️
-    </p>
-
   </div>
 
-  <!-- Main Content -->
-  <div class="flex-grow-1 d-flex flex-column">
+  <!-- MAIN CONTENT -->
+  <div class="main-content d-flex flex-column">
 
-    <!-- Top Navbar -->
+    <!-- TOP NAVBAR -->
     <nav class="navbar navbar-light bg-white shadow-sm px-3">
-      <button class="btn btn-outline-secondary me-3" (click)="toggleSidebar()">
+
+      <button class="btn btn-outline-secondary" (click)="toggleSidebar()">
         <i class="fa fa-bars"></i>
       </button>
 
-      <span class="fw-semibold">
+      <span class="fw-semibold ms-3">
         <i class="fa fa-dashboard me-2"></i>
         HR Management System
       </span>
+
     </nav>
 
-    <!-- Page Content -->
+    <!-- PAGE CONTENT -->
     <div class="flex-grow-1 p-4 bg-light overflow-auto">
       <router-outlet></router-outlet>
     </div>
 
   </div>
+
 </div>

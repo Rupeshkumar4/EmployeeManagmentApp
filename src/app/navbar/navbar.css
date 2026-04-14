@@ -1,80 +1,51 @@
-/* Sidebar smooth toggle */
+/* MAIN WRAPPER */
+.layout {
+  width: 100%;
+}
+
+/* SIDEBAR */
 .sidebar {
-  transition: width 0.3s ease-in-out;
+  width: 250px;
+  height: 100vh;
+  background: #212529;
+  transition: all 0.3s ease;
+  flex-shrink: 0;
   overflow: hidden;
 }
 
-.sidebar-open {
-  width: 250px;
+/* MAIN CONTENT */
+.main-content {
+  flex: 1;
+  width: calc(100% - 250px);
+  transition: all 0.3s ease;
 }
 
-.sidebar-closed {
-  width: 0px;
+/* COLLAPSED STATE */
+.sidebar-collapsed .sidebar {
+  width: 0;
 }
 
-/* Hover effects for navigation links */
-.nav-link {
-  transition: background-color 0.2s ease;
-  border-radius: 5px;
-  margin-bottom: 5px;
+/* IMPORTANT: FULL WIDTH EXPAND */
+.sidebar-collapsed .main-content {
+  width: 100% !important;
 }
 
-.nav-link:hover {
-  background-color: rgba(255, 255, 255, 0.1) !important;
-  color: #fff !important;
-}
-
-/* Logout button hover */
-.btn-outline-danger:hover {
-  background-color: #dc3545;
-  border-color: #dc3545;
-  color: white;
-}
-
-/* Toggle button hover */
-.btn-outline-secondary:hover {
-  background-color: #6c757d;
-  border-color: #6c757d;
-  color: white;
-}
-
+/* NAV LINKS */
 .nav-link {
   color: #ccc;
-  padding: 10px 15px;
+  padding: 10px;
   border-radius: 6px;
-  margin: 4px 8px;
+  display: flex;
+  align-items: center;
   transition: 0.2s;
 }
 
 .nav-link:hover {
-  background-color: #343a40;
+  background: #343a40;
   color: #fff;
 }
 
 .nav-link.active {
-  background-color: #0d6efd;
+  background: #0d6efd;
   color: #fff;
-}
-
-/* ICON STYLE */
-.nav-icon {
-  width: 25px;
-  text-align: center;
-  font-size: 16px;
-}
-
-/* TEXT */
-.nav-text {
-  margin-left: 10px;
-  white-space: nowrap;
-}
-
-/* COLLAPSE EFFECT */
-.sidebar-closed .nav-text {
-  display: none;
-}
-
-.sidebar-closed .nav-icon {
-  margin: auto;
-  font-size: 18px;
 }
