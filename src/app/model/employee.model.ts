@@ -60,4 +60,24 @@ export class AllLeaveBalance {
     this.empName = '';
   }
 }
- 
+
+export class leaveRequest {
+    
+  leaveId: number | undefined;
+  empId: number | undefined;
+  leaveDate: string| undefined;
+  fromDate: string | undefined;
+  toDate: string | undefined;
+  reason: string | undefined;
+  leaveType: string | undefined;
+
+    constructor() {
+      this.leaveId = 0;
+      this.empId = 0;
+      this.leaveDate = '';
+      this.fromDate = '';
+      this.toDate = '';
+      this.reason = '';
+      this.leaveType = '';
+    }
+}

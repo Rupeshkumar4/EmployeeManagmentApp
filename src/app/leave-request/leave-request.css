@@ -1,0 +1,12 @@
+  .header-bg {
+      background-color: #f4b400;
+      color: white;
+      font-weight: 600;
+    }
+    .card-header {
+  font-weight: 600;
+}
+
+button i {
+  margin-right: 5px;
+}

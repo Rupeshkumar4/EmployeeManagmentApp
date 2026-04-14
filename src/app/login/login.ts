@@ -25,7 +25,7 @@ export class Login {
           if (role === 'Hr') {
             this.router.navigate(['/employee']);
           } else{
-            this.router.navigate(['/leave-balance']);
+            this.router.navigate(['/leaverequest']);
           } 
         } else {
           alert('Login failed');

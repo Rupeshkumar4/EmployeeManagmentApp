@@ -1,67 +1,108 @@
 <div class="d-flex vh-100">
+
   <!-- Sidebar -->
-  <div class="bg-dark text-white d-flex flex-column sidebar" [ngClass]="{'sidebar-open': isSidebarOpen, 'sidebar-closed': !isSidebarOpen}" style="min-height: 150vh;">
-    <div class="p-3 flex-grow-1">
-      <h5 class="text-center">HR Dashboard</h5>
-      
+  <div class="sidebar bg-dark text-white d-flex flex-column"
+       [ngClass]="{'sidebar-open': isSidebarOpen, 'sidebar-closed': !isSidebarOpen}">
+
+    <!-- Logo -->
+    <div class="p-3 text-center border-bottom">
+      <h5 class="mb-0">
+        <i class="fa fa-building me-2"></i>
+        HR Dashboard
+      </h5>
+    </div>
+
+    <!-- Menu -->
+    <div class="flex-grow-1 p-2">
       <ul class="nav flex-column">
+
         @if(role === 'Hr'){
-        <li class="nav-item">
-          <a class="nav-link text-white" routerLink="employee" routerLinkActive="active">
-            <i class="fa fa-users mr-2"></i> Employees
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link text-white" routerLink="balance" routerLinkActive="active">
-            <i class="fa fa-calendar mr-2"></i> Leave Balance
-          </a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link text-white" routerLink="leave" routerLinkActive="active">
-              <i class="fa fa-file-text mr-2"></i> Leave Requests
-            </a>
-          </li>
-       }
-        @else {
-            <li class="nav-item">
-            <a class="nav-link text-white" routerLink="leave" routerLinkActive="active">
-              <i class="fa fa-file-text mr-2"></i> Leave Requests
-            </a>
-          </li>
+
           <li class="nav-item">
-            <a class="nav-link text-white" routerLink="admin" routerLinkActive="active">
-              <i class="fa fa-cog mr-2"></i> Admin
+            <a class="nav-link d-flex align-items-center" routerLink="employee" routerLinkActive="active">
+              <i class="fa fa-users me-3"></i>
+              <span>Employees</span>
             </a>
           </li>
-      }
+
+          <li class="nav-item">
+            <a class="nav-link d-flex align-items-center" routerLink="balance" routerLinkActive="active">
+              <i class="fa fa-calendar-check me-3"></i>
+              <span>Leave Balance</span>
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link d-flex align-items-center" routerLink="leave" routerLinkActive="active">
+              <i class="fa fa-file-alt me-3"></i>
+              <span>Leave Requests</span>
+            </a>
+          </li>
+
+        }
+
+        @else {
+
+          <li class="nav-item">
+            <a class="nav-link d-flex align-items-center" routerLink="leaverequest" routerLinkActive="active">
+              <i class="fa fa-paper-plane me-3"></i>
+              <span>Leave Requests</span>
+            </a>
+          </li>
+
+        }
+
       </ul>
     </div>
-    <div class="p-3 w-100" style="color: aqua;">
+
+    <!-- User Info -->
+    <div class="p-3 border-top small text-center">
       @if(userName){
-        <span>{{userName}} || {{role}}</span>
+        <div>
+          <i class="fa fa-user-circle me-1"></i>
+          {{ userName }}
+        </div>
+        <div class="text-info">
+          <i class="fa fa-id-badge me-1"></i>
+          {{ role }}
+        </div>
       }
     </div>
+
+    <!-- Logout -->
     <div class="p-3">
-      <button class="btn btn-outline-danger w-100" (click)="logout()">
-        <i class="fa fa-sign-out"></i> Logout
+      <button class="btn btn-danger w-100">
+        <i class="fa fa-sign-out-alt me-2"></i>
+        Logout
       </button>
-      
     </div>
+
+    <!-- Footer -->
+    <p class="text-center small text-secondary mb-2">
+      Developed by Rupesh Kumar ❤️
+    </p>
+
   </div>
 
   <!-- Main Content -->
   <div class="flex-grow-1 d-flex flex-column">
+
     <!-- Top Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
-      <button class="btn btn-outline-secondary mr-3" (click)="toggleSidebar()">
+    <nav class="navbar navbar-light bg-white shadow-sm px-3">
+      <button class="btn btn-outline-secondary me-3" (click)="toggleSidebar()">
         <i class="fa fa-bars"></i>
       </button>
-      <span class="navbar-brand mb-0 h1">HR Management System</span>
+
+      <span class="fw-semibold">
+        <i class="fa fa-dashboard me-2"></i>
+        HR Management System
+      </span>
     </nav>
 
     <!-- Page Content -->
-    <div class="flex-grow-1 p-3 overflow-auto">
+    <div class="flex-grow-1 p-4 bg-light overflow-auto">
       <router-outlet></router-outlet>
     </div>
+
   </div>
 </div>

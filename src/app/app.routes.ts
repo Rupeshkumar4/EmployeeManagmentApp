@@ -29,15 +29,11 @@ export const routes: Routes = [
                 component:LeaveBalance
             },
             {
-                path:'leave',
-                component:LeaveBalance
-            },
-            {
                 path:'admin',
                 component:Admin
             },
             {
-                path:'leave-request',
+                path:'leaverequest',
                 component:LeaveRequest
             }
         ]
